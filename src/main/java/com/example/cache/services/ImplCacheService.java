@@ -1,9 +1,6 @@
 package com.example.cache.services;
 
 import com.example.cache.models.Cache;
-import com.example.cache.models.User;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -18,7 +15,7 @@ public class ImplCacheService implements CacheService {
 
     @Override
     public Cache getCache(Long key) {
-        if (cacheIsExpired(key)) {
+        if (isCacheExpired(key)) {
             delete(key);
         }
         return cacheDB.get(key);
@@ -38,8 +35,7 @@ public class ImplCacheService implements CacheService {
         return cacheDB.containsKey(key);
     }
 
-    @Override
-    public boolean cacheIsExpired(Long key) {
+    public boolean isCacheExpired(Long key) {
         return (System.nanoTime() - timerDB.get(key)) > cacheDB.get(key).getTTL();
     }
 

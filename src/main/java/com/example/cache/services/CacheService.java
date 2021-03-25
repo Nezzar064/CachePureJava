@@ -11,7 +11,7 @@ public interface CacheService {
 
     boolean has(Long key);
 
-    boolean cacheIsExpired(Long key);
+    boolean isCacheExpired(Long key);
 
     void delete(Long key);
 
