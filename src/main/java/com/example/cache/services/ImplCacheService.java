@@ -42,6 +42,7 @@ public class ImplCacheService implements CacheService {
     @Override
     public void delete(Long key) {
         cacheDB.remove(key);
+        timerDB.remove(key);
     }
 
     @Override
