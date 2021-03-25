@@ -9,7 +9,7 @@ public class User {
     private long id;
     private String content;
 
-    public User(long id) throws InterruptedException {
+    public User(long id) {
         this.id = id;
         this.content = getDataSlow();
     }
@@ -30,8 +30,13 @@ public class User {
         this.content = content;
     }
 
-    private String getDataSlow() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(5);
+    private String getDataSlow() {
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            System.out.println("LOG: *ERROR* sleep() DID NOT WORK AS INTENDED, INSERTING TEXT WITHOUT SLOW CALL");
+        }
         return RandomStringUtils.randomAlphabetic(1000);
     }
 }

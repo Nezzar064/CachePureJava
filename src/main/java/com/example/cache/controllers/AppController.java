@@ -17,7 +17,7 @@ public class AppController {
 
     @GetMapping(value = "/get-user-data")
     @ResponseBody
-    public String getDataFromKey(@RequestParam Long id) throws InterruptedException {
+    public String getDataFromKey(@RequestParam Long id) {
         if (!cacheService.has(id)) {
             User user = new User(id);
             cacheService.set(id, user.getContent());
