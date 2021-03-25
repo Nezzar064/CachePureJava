@@ -35,7 +35,7 @@ public class User {
             TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
             e.printStackTrace();
-            System.out.println("LOG: *ERROR* sleep() DID NOT WORK AS INTENDED, INSERTING TEXT WITHOUT SLOW CALL");
+            System.out.println("LOG: *ERROR* sleep() DID NOT WORK AS INTENDED, INSERTING TEXT WITHOUT SLOW CALL!");
         }
         return RandomStringUtils.randomAlphabetic(1000);
     }
