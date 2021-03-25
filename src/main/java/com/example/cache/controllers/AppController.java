@@ -19,16 +19,16 @@ public class AppController {
     @ResponseBody
     public String getDataFromKey(@RequestParam Long id) throws InterruptedException {
         if (!cacheService.has(id)) {
-            User user = new User(id, cacheService.getDataSlow());
+            User user = new User(id);
             cacheService.set(id, user.getContent());
-            System.out.println("LOG: NEW USER CREATED WITH REQUESTED ID AND IS PUT IN CACHE!");
+            System.out.println("LOG: NEW USER CREATED WITH REQUESTED ID AND IS SAVED IN CACHE!");
         }
         try {
             return cacheService.getCache(id).getContent();
         }
         catch (NullPointerException e) {
             e.printStackTrace();
-            System.out.println("LOG: ERROR, TTL FOR CACHE EXCEEDED, CACHE IS DELETED");
+            System.out.println("LOG: *ERROR* CACHE IS DELETED BECAUSE TTL IS EXCEEDED!");
         }
         return "The Cache you have requested has been deleted due to TTL being exceeded";
     }

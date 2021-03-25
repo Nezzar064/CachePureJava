@@ -17,6 +17,4 @@ public interface CacheService {
 
     long setTTL(long TTL);
 
-    String getDataSlow() throws InterruptedException;
-
 }

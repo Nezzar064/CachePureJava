@@ -52,12 +52,6 @@ public class ImplCacheService implements CacheService {
     public long setTTL(long TTL) {
         return TimeUnit.SECONDS.toNanos(TTL);
     }
-
-    @Override
-    public String getDataSlow() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(5);
-        return RandomStringUtils.randomAlphabetic(1000);
-    }
 }
 
 

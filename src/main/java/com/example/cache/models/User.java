@@ -1,13 +1,17 @@
 package com.example.cache.models;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
+import java.util.concurrent.TimeUnit;
+
 public class User {
 
     private long id;
     private String content;
 
-    public User(long id, String content) {
+    public User(long id) throws InterruptedException {
         this.id = id;
-        this.content = content;
+        this.content = getDataSlow();
     }
 
     public long getId() {
@@ -19,10 +23,15 @@ public class User {
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    private String getDataSlow() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
+        return RandomStringUtils.randomAlphabetic(1000);
     }
 }
