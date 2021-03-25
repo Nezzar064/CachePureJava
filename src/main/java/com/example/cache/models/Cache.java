@@ -1,7 +1,5 @@
 package com.example.cache.models;
 
-import java.util.concurrent.TimeUnit;
-
 public class Cache {
 
     private Long key;
